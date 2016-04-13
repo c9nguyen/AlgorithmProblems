@@ -1,23 +1,18 @@
+import java.io.StringBufferInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Random;
+import java.util.Scanner;
 import java.util.Set;
 
 public class Main {
 	
 	public static void main(String[] args) {
-		Set<Integer> a = new HashSet<Integer>();
-		Set<Integer> b = new HashSet<Integer>();
+		StringBuilder sb = new StringBuilder();
 		
-		a.add(2);
-		a.add(2);
-		b.add(2);
-	
-
-		
-		HashMap<Set, Integer> hs = new HashMap<Set, Integer>();
-		hs.put(a, 2);
-		System.out.println(hs.containsKey(b));
+		sb.append(Character.toChars(1 + 'a'));
+		System.out.println(sb);
 	}
 	
 	public static class Combine {

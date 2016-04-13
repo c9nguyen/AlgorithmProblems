@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		
+		int num = sc.nextInt();
+		
+		boolean isEven = num % 25 == 0;
+		
+		int numOf25 = num / 25;
+		
+		int numOfZ = numOf25 - 1;
+		
+		int minDigits = numOf25 + ((isEven) ? 2 : 1);
+		
+		System.out.println(minDigits);
+		
+	}
+
+}
