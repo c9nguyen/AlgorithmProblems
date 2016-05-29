@@ -1,0 +1,95 @@
+
+public class Solution {
+	static int count;
+
+	public static void main (String[] args) {
+		int[][] table = {{1, 1, 1},
+				{1, 0, 1},
+				{1, 1, 1}};
+		
+		print(solve(table, 2));
+		System.out.println("count: " + count);
+		print(table);
+
+//		System.out.println(check(solve(table, 2), 2));
+
+
+	}
+
+	static int[][] solve(int[][] table, int level) {
+		int nextX, nextY;
+		int temp1, temp2;
+		int[][] returnTable;
+		count++;
+
+		// Run through every locations to check possible moves
+		for (int i = 0; i < table.length; i++) {
+			for (int j = 0; j < table[0].length; j++) {
+				if (table[i][j] < level) {		//If the location hasn't reached max level
+	//				System.out.println("Check");
+					
+					//Check all location around
+					for (int addY = -1; addY <= 1; addY++) {
+						for (int addX = - 1; addX <= 1; addX++) {
+							if (addY != 0 || addX != 0) {
+
+								//For each move
+								nextX = j + addX;		// 
+								nextY = i + addY;		// Next move
+								if (nextX >= 0 && nextX < table.length &&
+										nextY >= 0 && nextY < table.length &&
+										table[nextY][nextX] + table[i][j] <= level) {		//Check if next move is legit
+
+									returnTable = table.clone();
+									returnTable[nextY][nextX] += table[i][j];
+									returnTable[i][j]++;	
+									
+									temp1 = returnTable[i][j];
+									temp2 = returnTable[nextY][nextX];
+									
+//									print(returnTable);
+//									System.out.println();
+									returnTable = solve(table, level);
+							
+									
+									
+									if (check(returnTable, level)) {
+										System.out.println("Going back");
+										return returnTable;
+									} else {
+										returnTable[i][j] = temp1;
+										returnTable[nextY][nextX] = temp2;
+									}
+								}
+							}
+						}
+					}					
+				}
+			}
+		}			
+
+		return table;
+	}
+
+
+	
+	
+	static boolean check(int[][] table, int level) {
+		for (int i = 0; i < table.length; i++) {
+			for (int j = 0; j < table[0].length; j++) {
+				if (table[i][j] != level) return false;
+			}
+		}
+
+		return true;
+	}
+	
+	static void print(int[][] table) {
+		for (int i = 0; i < table.length; i++) {
+			for (int j = 0; j < table[0].length; j++) {
+				System.out.print(table[i][j] + "\t");
+			}
+			System.out.println();
+		}
+	}
+}

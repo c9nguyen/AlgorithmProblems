@@ -1,0 +1,67 @@
+
+public class Solution {
+
+
+	public static void main (String[] args) {
+		int[][] table = {{1, 1, 1},
+						{1, 0, 1},
+						{1, 1, 1}};
+		
+		System.out.println(check(table, 1));
+	}
+	
+	static int[][] solve(int[][] table, int level, int indexX, int indexY) {
+		if (table[indexY][indexX] < level) {
+			int nextX, nextY;
+			int[][] returnTable;
+			
+			if (indexX == 0) {
+				if (indexY == 0) {
+					nextX = indexX;
+					nextY = indexY + 1;
+					if (table[nextY][nextX] + table[indexY][indexX] < level) {
+						returnTable = table.clone();
+						returnTable[indexY][indexX]++;
+						returnTable[nextY][nextX] += table[indexY][indexX];
+						returnTable = solve(table, level, nextX, nextY);
+					}
+					
+				} else if (indexY == 1) {
+					
+				} else {
+					
+				}
+			} else if (indexX == 1) {
+				if (indexY == 0) {
+					
+				} else if (indexY == 1) {
+					
+				} else {
+					
+				}
+			} else {
+				if (indexY == 0) {
+					
+				} else if (indexY == 1) {
+					
+				} else {
+					
+				}
+			}
+			
+			table[indexY][indexX]++;
+		}
+		
+		return table;
+	}
+	
+	static boolean check(int[][] table, int level) {
+		for (int i = 0; i < table.length; i++) {
+			for (int j = 0; j < table[0].length; j++) {
+				if (table[i][j] != level) return false;
+			}
+		}
+		
+		return true;
+	}
+}
