@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 GitRepositoriesView.GitDirectories=D\:\\Java\\AlgorithmProblems\\.git;C\:\\Users\\cqngu\\java\\AlgorithmProblems\\.git;
+=======
+GitRepositoriesView.GitDirectories=D\:\\Java\\AlgorithmProblems\\.git;
+GitRepositoriesView.GitDirectories.relative=.git;
+>>>>>>> 3f10010a026309560af89c203664e478bbefaa54
 eclipse.preferences.version=1

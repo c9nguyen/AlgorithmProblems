@@ -1,5 +1,6 @@
 import java.io.StringBufferInputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
@@ -9,9 +10,16 @@ import java.util.Set;
 public class Main {
 	
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		What b = new What();
 		Who a = new Who();
 		System.out.println(a.myName());
+=======
+		int[] a = {2};
+		int[] b = {2};
+		
+		System.out.println(Arrays.equals(a, b));
+>>>>>>> 3f10010a026309560af89c203664e478bbefaa54
 	}
 	
 	public static class Combine {
