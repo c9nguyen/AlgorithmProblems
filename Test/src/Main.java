@@ -9,10 +9,9 @@ import java.util.Set;
 public class Main {
 	
 	public static void main(String[] args) {
-		StringBuilder sb = new StringBuilder();
-		
-		sb.append(Character.toChars(1 + 'a'));
-		System.out.println(sb);
+		What b = new What();
+		Who a = new Who();
+		System.out.println(a.myName());
 	}
 	
 	public static class Combine {
