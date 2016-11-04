@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		StringBuilder sb = new StringBuilder();
+		while (sc.hasNextInt()) {
+			int num = sc.nextInt();
+			int max = sc.nextInt();
+			sc.nextLine();
+			ArrayList<String[]> list = new ArrayList<String[]>();
+			while (num-- > 0) {
+				String line = sc.nextLine();
+				String[] element = line.split(" ");
+				list.add(element);
+			}
+			
+			for (int index = 0; index < list.size(); index++) {
+				sb.append(list.get(index)[2]);
+				sb.append("\n");
+			}
+		}
+		
+		System.out.print(sb.toString());
+		
+	}
+	
+	
+}
