@@ -1,0 +1,71 @@
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class Classy {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int num = sc.nextInt();
+		sc.nextLine();
+		Person[] list = new Person[num];
+		int index = 0;
+		while (index < num) {
+			String line = sc.nextLine();
+			String[] level = line.split(" ");
+			list[index] = new Person(level);
+			
+			index++;
+		}
+		Arrays.sort(list);
+	//	Arrays.sort(list, Collections.reverseOrder());
+		
+		for (Person person : list) {
+			System.out.println(person.name);
+		}
+	}
+	
+	public static class Person implements Comparable<Person>{
+		String name;
+		int level;
+		
+		public Person(String[] line) {
+			name = line[0].substring(0, line[0].length() - 1);
+			level = 0;
+			for (int i = 1; i < line.length - 1; i++) {
+				level *= 10;
+				int num = line[i].equals("upper") ? 3 : line[i].equals("middle") ? 2 : 1;			
+				level += num;
+			}
+		}
+
+		@Override
+		public int compareTo(Person other) {
+			// TODO Auto-generated method stub
+			int compare = 0;
+			int temp1 = this.level;
+			int temp2 = other.level;
+			while (temp1 > 0 && temp2 > 0 && compare == 0) {
+				if (temp1 % 10 > temp2 % 10) 
+					compare = -1;
+				else if (temp1 % 10 < temp2 % 10)
+					compare = 1;
+				else {
+					temp1 /= 10;
+					temp2 /= 10;
+				}
+				
+			}
+			
+			if (compare == 0) {
+				compare = name.compareTo(other.name);
+			}
+			
+			return compare;
+		}
+		
+		
+		
+	}
+	
+}

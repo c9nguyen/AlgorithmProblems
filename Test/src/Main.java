@@ -10,10 +10,11 @@ import java.util.Set;
 public class Main {
 	
 	public static void main(String[] args) {
-		int[] a = {2};
-		int[] b = {2};
-		
-		System.out.println(Arrays.equals(a, b));
+		final int[] a = new int[2];
+		a[1] = 2;
+		System.out.println(a[1]);
+		a[1] = 3;
+		System.out.println(a[1]);
 	}
 	
 	public static class Combine {

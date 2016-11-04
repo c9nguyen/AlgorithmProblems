@@ -1,0 +1,170 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+//		Scanner sc = new Scanner(new File("input.txt"));
+		StringBuilder sb = new StringBuilder();
+		while (sc.hasNextInt()) {
+			int num = sc.nextInt();
+			int max = sc.nextInt();
+			sc.nextLine();
+			ArrayList<String[]> list = new ArrayList<String[]>();
+			while (num-- > 0) {
+				String line = sc.nextLine();
+				String[] element = line.split(" ");
+				list.add(element);
+				int a = Integer.parseInt(element[1]);
+			}
+			
+			
+			
+			//list = sort(list, 1, 0, max, 0, max);
+			
+			for (int index = 0; index < list.size(); index++) {
+				sb.append(list.get(index)[2]);
+				sb.append("\n");
+			}
+		}
+		
+		System.out.print(sb.toString());
+		
+	}
+	
+	public static ArrayList<String[]> sort(ArrayList<String[]> list, int state, 
+			int xFrom, int xTo, int yFrom, int yTo) {
+		if (list.size() <= 1) {
+			return list;
+		}
+		ArrayList<String[]> toReturn = new ArrayList<String[]>();
+		ArrayList<String[]> group1 = new ArrayList<String[]>();
+		ArrayList<String[]> group2 = new ArrayList<String[]>();
+		ArrayList<String[]> group3 = new ArrayList<String[]>();
+		ArrayList<String[]> group4 = new ArrayList<String[]>();
+		int xHalf = ((xTo - xFrom) / 2) + xFrom;
+		int yHalf = ((yTo - yFrom) / 2) + yFrom;
+		
+		if (state == 1) {
+			for (int i = 0; i < list.size(); i++) {
+				String[] e = list.get(i);
+				int ex = Integer.parseInt(e[0]);
+				int ey = Integer.parseInt(e[1]);
+				
+				if (ex < xHalf) {
+					if (ey < yHalf) {
+						group1.add(e);
+					} else {
+						group2.add(e);
+					}
+				} else {
+					if (ey < yHalf) {
+						group4.add(e);
+					} else {
+						group3.add(e);
+					}
+				}
+			}
+			group1 = sort(group1, 2, xFrom, xHalf, yFrom, yHalf);
+			group2 = sort(group2, 1, xFrom, xHalf, yHalf, yTo);
+			group3 = sort(group3, 1, xHalf, xTo, yHalf, yTo);
+			group4 = sort(group4, 3, xHalf, xTo, yFrom, yHalf);
+		} else if (state == 2) {
+			for (int i = 0; i < list.size(); i++) {
+				String[] e = list.get(i);
+				int ex = Integer.parseInt(e[0]);
+				int ey = Integer.parseInt(e[1]);
+				
+				if (ex < xHalf) {
+					if (ey < yHalf) {
+						group1.add(e);
+					} else {
+						group4.add(e);
+					}
+				} else {
+					if (ey < yHalf) {
+						group2.add(e);
+					} else {
+						group3.add(e);
+					}
+				}
+			}
+			group1 = sort(group1, 1, xFrom, xHalf, yFrom, yHalf);
+			group2 = sort(group2, 2, xHalf, xTo, yFrom, yHalf);
+			group3 = sort(group3, 2, xHalf, xTo, yHalf, yTo);
+			group4 = sort(group4, 4, xFrom, xHalf, yHalf, yTo);
+		} else if (state == 3) {
+			for (int i = 0; i < list.size(); i++) {
+				String[] e = list.get(i);
+				int ex = Integer.parseInt(e[0]);
+				int ey = Integer.parseInt(e[1]);
+				
+				if (ex < xHalf) {
+					if (ey < yHalf) {
+						group3.add(e);
+					} else {
+						group2.add(e);
+					}
+				} else {
+					if (ey < yHalf) {
+						group4.add(e);
+					} else {
+						group1.add(e);
+					}
+				}
+			}
+			group1 = sort(group1, 4, xHalf, xTo, yHalf, yTo);
+			group2 = sort(group2, 3, xFrom, xHalf, yHalf, yTo);
+			group3 = sort(group3, 3, xFrom, xHalf, yFrom, yHalf);
+			group4 = sort(group4, 1, xHalf, xTo, yFrom, yHalf);
+		} else if (state == 4) {
+			for (int i = 0; i < list.size(); i++) {
+				String[] e = list.get(i);
+				int ex = Integer.parseInt(e[0]);
+				int ey = Integer.parseInt(e[1]);
+				
+				if (ex < xHalf) {
+					if (ey < yHalf) {
+						group3.add(e);
+					} else {
+						group4.add(e);
+					}
+				} else {
+					if (ey < yHalf) {
+						group2.add(e);
+					} else {
+						group1.add(e);
+					}
+				}
+			}
+			group1 = sort(group1, 2, xHalf, xTo, yHalf, yTo);
+			group2 = sort(group2, 4, xHalf, xTo, yFrom, yHalf);
+			group3 = sort(group3, 4, xFrom, xHalf, yFrom, yHalf);
+			group4 = sort(group4, 3, xFrom, xHalf, yHalf, yTo);
+		}
+		
+		for (int i = 0; i < group1.size(); i++) {
+			toReturn.add(group1.get(i));
+		}
+		
+		for (int i = 0; i < group2.size(); i++) {
+			toReturn.add(group2.get(i));
+		}
+		
+		for (int i = 0; i < group3.size(); i++) {
+			toReturn.add(group3.get(i));
+		}
+		
+		for (int i = 0; i < group4.size(); i++) {
+			toReturn.add(group4.get(i));
+		}
+		
+		return toReturn;
+	}
+	
+	
+}
