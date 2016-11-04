@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-
 	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
-//		Scanner sc = new Scanner(new File("input.txt"));
+//		Scanner sc = new Scanner(System.in);
+		Scanner sc = new Scanner(new File("input.txt"));
 		StringBuilder sb = new StringBuilder();
 		while (sc.hasNextInt()) {
 			int num = sc.nextInt();
@@ -35,9 +34,11 @@ public class Main {
 	
 	public static ArrayList<String[]> sort(ArrayList<String[]> list, int state, 
 			int xFrom, int xTo, int yFrom, int yTo) {
+		
 		if (list.size() <= 1) {
 			return list;
 		}
+//		System.out.println(list.size());
 		ArrayList<String[]> toReturn = new ArrayList<String[]>();
 		ArrayList<String[]> group1 = new ArrayList<String[]>();
 		ArrayList<String[]> group2 = new ArrayList<String[]>();
@@ -49,10 +50,9 @@ public class Main {
 		if (state == 1) {
 			for (int i = 0; i < list.size(); i++) {
 				String[] e = list.get(i);
-//				int ex = Integer.parseInt(e[0]);
-//				int ey = Integer.parseInt(e[1]);
-				int ex = 2;
-				int ey = 2;
+				int ex = Integer.parseInt(e[0]);
+				int ey = Integer.parseInt(e[1]);
+
 				
 				if (ex < xHalf) {
 					if (ey < yHalf) {
@@ -75,10 +75,8 @@ public class Main {
 		} else if (state == 2) {
 			for (int i = 0; i < list.size(); i++) {
 				String[] e = list.get(i);
-//				int ex = Integer.parseInt(e[0]);
-//				int ey = Integer.parseInt(e[1]);
-				int ex = 2;
-				int ey = 2;
+				int ex = Integer.parseInt(e[0]);
+				int ey = Integer.parseInt(e[1]);
 				
 				if (ex < xHalf) {
 					if (ey < yHalf) {
@@ -101,10 +99,9 @@ public class Main {
 		} else if (state == 3) {
 			for (int i = 0; i < list.size(); i++) {
 				String[] e = list.get(i);
-//				int ex = Integer.parseInt(e[0]);
-//				int ey = Integer.parseInt(e[1]);
-				int ex = 2;
-				int ey = 2;
+				int ex = Integer.parseInt(e[0]);
+				int ey = Integer.parseInt(e[1]);
+
 				
 				if (ex < xHalf) {
 					if (ey < yHalf) {
@@ -127,10 +124,9 @@ public class Main {
 		} else if (state == 4) {
 			for (int i = 0; i < list.size(); i++) {
 				String[] e = list.get(i);
-//				int ex = Integer.parseInt(e[0]);
-//				int ey = Integer.parseInt(e[1]);
-				int ex = 2;
-				int ey = 2;
+				int ex = Integer.parseInt(e[0]);
+				int ey = Integer.parseInt(e[1]);
+
 				
 				if (ex < xHalf) {
 					if (ey < yHalf) {
